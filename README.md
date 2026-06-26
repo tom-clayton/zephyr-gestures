@@ -7,10 +7,10 @@ A Zephyr gesture recognition library. Connects to an lsm6ds3tr accelerometer to 
 The repo must be cloned with submodules.
 
 ```console
-git clone --recursive- https://github.com/tom-clayton/zephyr-gestures.git
+git clone --recursive https://github.com/tom-clayton/zephyr-gestures.git
 ```
 
-Include the c files and include directories from the repo, the lsm6ds3tr directory and i2c-wrapper directory in the CMakeLists.txt.
+Include the c files and include directories from the repo, from the lsm6ds3tr directory and from the lsm6ds3tr's i2c-wrapper directory in the CMakeLists.txt.
 
 ## Usage
 
