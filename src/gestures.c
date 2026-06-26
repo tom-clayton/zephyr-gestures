@@ -24,26 +24,27 @@ static gesture_mode mode;
 static void (*gesture_callback)(struct gesture) = NULL;
 
 /*
- *  I2C read register function.
+ *  I2C write function.
  */
-uint8_t i2c_read_reg(uint8_t reg, uint8_t *data)
+int zephyr_i2c_write(const uint8_t *buf, size_t len)
 {
-    return i2c_reg_read_byte(dev_i2c.bus, dev_i2c.addr, reg, data);
+    return i2c_write(dev_i2c.bus, buf, len, dev_i2c.addr);
 }
+
 /*
- * I2C write register function.
+ * I2C write-read function.
  */
-uint8_t i2c_write_reg(uint8_t reg, uint8_t data)
+int zephyr_i2c_write_read(uint8_t reg, uint8_t *out, size_t out_len)
 {
-    return i2c_reg_write_byte(dev_i2c.bus, dev_i2c.addr, reg, data); 
+    return i2c_write_read(dev_i2c.bus, dev_i2c.addr, &reg, 1, out, out_len); 
 }
 
 /*
  * I2C wrapper struct.
  */
 static const i2c_bus_t i2c_bus = {
-  .i2c_read_reg = i2c_read_reg,
-  .i2c_write_reg = i2c_write_reg,
+  .i2c_write = zephyr_i2c_write,
+  .i2c_write_read = zephyr_i2c_write_read,
 };
 
 /*
