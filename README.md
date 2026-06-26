@@ -2,6 +2,11 @@
 
 A Zephyr gesture recognition library. Connects to an lsm6ds3tr accelerometer to recognise gestures.
 
+## Instalation
+
+The repo must be cloned with submodules to find the lsm6ds3tr driver.<br>
+Include gesture.c and the include directory in the CMakeLists.txt.
+
 ## Usage
 
 Requires the accelerometer to be setup in the device tree with alias 'accelerometer'.
@@ -33,10 +38,6 @@ void gesture_select_mode(gesture_mode new_mode);
 ```
 
 The i2c bus that the accelerometer is on is not checked at startup, this must be done independently.
-
-## Compilation Notes
-
-lsm6ds3tr.h and lsm6ds3tr.c must be included in the build.
 
 ## Todo:
 
